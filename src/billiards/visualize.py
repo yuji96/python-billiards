@@ -105,7 +105,7 @@ class CircleCollection(Collection):  # pragma: no cover
                 offsets,
                 transOffset.frozen(),
             )
-            result = result.inverse_transformed(transData)
+            result = result.transformed(transData.inverted())
         else:
             result = mtransforms.Bbox.null()
         return result
