@@ -205,6 +205,7 @@ def plot_balls(bld, ax, color="C0", **kwargs):
         zorder=0,
         **kwargs,
     )
+    # TODO: init() に移動
     ax.add_collection(circles)
 
     # draw point particles
@@ -330,7 +331,6 @@ def animate(bld, end_time, fps=30, fig=None, ax=None):
     fig, ax = default_fig_and_ax(fig=fig, ax=ax)
 
     # plot billiard obstacle and balls
-    plot_obstacles(bld, ax)
     circles, points = plot_balls(bld, ax)
     arrows = plot_velocities(bld, ax)
 
@@ -343,10 +343,11 @@ def animate(bld, end_time, fps=30, fig=None, ax=None):
     draw_as_markers = np.logical_not(draw_as_circles)
 
     def init():
-        circles.set_offsets(np.empty(shape=(0, 2)))
-        points.set_offsets(np.empty(shape=(0, 2)))
-        arrows.set_offsets(np.empty(shape=(0, 2)))
-        arrows.set_UVC(np.empty(shape=(0, 1)), np.empty(shape=(0, 1)))
+        plot_obstacles(bld, ax)
+        circles.set_offsets(np.empty(shape=(1, 2)))
+        points.set_offsets(np.empty(shape=(1, 2)))
+        arrows.set_offsets(np.empty(shape=(1, 2)))
+        arrows.set_UVC(np.empty(shape=(1, 1)), np.empty(shape=(1, 1)))
 
         time_text.set_text("")
 
