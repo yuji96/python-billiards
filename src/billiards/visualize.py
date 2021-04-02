@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Visualize a billiard table using matplotlib and pyglet."""
 import numpy as np
+from tqdm import tqdm
 
 from .obstacles import circle_model
 
@@ -320,7 +321,7 @@ def animate(bld, end_time, fps=30, fig=None, ax=None):
     time = []
     positions = []
     velocities = []
-    for i in range(frames):
+    for i in tqdm(range(frames)):
         bld.evolve(i / fps)
 
         time.append(bld.time)

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """A cloud of billiard balls collapses, but the balls keep colliding."""
+from matplotlib import pyplot as plt
 import numpy as np
 
 import billiards
@@ -28,3 +29,4 @@ anim = billiards.visualize.animate(bld, end_time=15)
 ax = anim._fig.gca()
 ax.set_xlim(-40, 40)
 ax.set_ylim(-40, 40)
+plt.show()

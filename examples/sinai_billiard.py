@@ -6,6 +6,7 @@ The billiard table is a unit square where a disk in the center was removed.
 The billiard balls are point particles that don't collide with each other.
 """
 from math import cos, pi, sin
+from matplotlib import pyplot as plt
 
 import numpy as np
 
@@ -40,3 +41,4 @@ for i in range(num_balls):
 anim = billiards.visualize.animate(bld, end_time=10)
 anim._fig.set_size_inches((6, 6))
 # anim.save("sinai_billiard.mp4")
+plt.show()
