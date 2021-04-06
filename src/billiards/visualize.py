@@ -288,7 +288,7 @@ def plot(bld, fig=None, ax=None):
     return fig
 
 
-def animate(bld, end_time, fps=30, fig=None, ax=None):
+def animate(bld, end_time, fps=30, fig=None, ax=None, **kwargs):
     """Animate the billiard plot.
 
     Note that you have to assign the returned anim object to a variable,
@@ -369,7 +369,7 @@ def animate(bld, end_time, fps=30, fig=None, ax=None):
         return (circles, points, arrows, time_text)
 
     anim = FuncAnimation(
-        fig, animate, frames, interval=1000 / fps, blit=True, init_func=init,
+        fig, animate, frames, interval=1000 / fps, blit=True, init_func=init, **kwargs
     )
 
     REMEMBER_ANIM = anim
